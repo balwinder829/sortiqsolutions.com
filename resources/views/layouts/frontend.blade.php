@@ -3,7 +3,7 @@
 @php
     $routeName = request()->route()?->getName();
     $requestPath = '/' . ltrim(request()->path(), '/');
-    if (\App\Support\Seo\PageMeta::isDraftRoute($routeName, $requestPath)) {
+    if (method_exists(\App\Support\Seo\PageMeta::class, 'isDraftRoute') && \App\Support\Seo\PageMeta::isDraftRoute($routeName, $requestPath)) {
         abort(404);
     }
 
@@ -59,21 +59,117 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>{{ $pageTitle }}</title>
+      @php
+          $cleanTitle = trim($pageTitle);
+          // Optimize title length (<= 60 chars) for search engines if over limit
+          if (mb_strlen($cleanTitle) > 60 && !request()->routeIs('frontend.blog.show')) {
+              if (str_contains($cleanTitle, ' | ')) {
+                  $tParts = explode(' | ', $cleanTitle);
+                  $candidate = trim($tParts[0]) . ' | Sortiq';
+                  $cleanTitle = mb_strlen($candidate) <= 60 ? $candidate : (mb_substr(trim($tParts[0]), 0, 48) . '... | Sortiq');
+              } else {
+                  $cleanTitle = mb_substr($cleanTitle, 0, 57) . '...';
+              }
+          }
+      @endphp
+      <title>{{ $cleanTitle }}</title>
       <meta name="description" content="{{ $pageDescription }}">
       @if ($pageKeywords)
         <meta name="keywords" content="{{ $pageKeywords }}">
       @endif
       <link rel="canonical" href="{{ $canonicalUrl }}">
       <meta property="og:type" content="{{ $pageType }}">
-      <meta property="og:title" content="{{ $pageTitle }}">
+      <meta property="og:title" content="{{ $cleanTitle }}">
       <meta property="og:description" content="{{ $pageDescription }}">
       <meta property="og:url" content="{{ $canonicalUrl }}">
       <meta property="og:image" content="{{ $pageImage }}">
       <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:title" content="{{ $pageTitle }}">
+      <meta name="twitter:title" content="{{ $cleanTitle }}">
       <meta name="twitter:description" content="{{ $pageDescription }}">
       <meta name="twitter:image" content="{{ $pageImage }}">
+
+      <!-- Schema.org Structured Data (Identity, LocalBusiness, WebSite) -->
+      <script type="application/ld+json">
+      {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@graph' => [
+          [
+            '@type' => 'Organization',
+            '@id' => url('/') . '#organization',
+            'name' => 'Sortiq Solutions Pvt. Ltd.',
+            'alternateName' => 'Sortiq Solutions',
+            'url' => url('/'),
+            'logo' => [
+              '@type' => 'ImageObject',
+              '@id' => url('/') . '#logo',
+              'url' => asset('frontend-assets/media/admin-use.png'),
+              'caption' => 'Sortiq Solutions Logo'
+            ],
+            'image' => asset('frontend-assets/media/admin-use.png'),
+            'description' => 'Sortiq Solutions delivers high-performance web development, mobile applications, digital marketing, and IT consulting services.',
+            'telephone' => '+91 9646522110',
+            'email' => 'info@sortiqsolutions.com',
+            'address' => [
+              '@type' => 'PostalAddress',
+              'streetAddress' => 'E-51, Second Floor, Phase - 8, Industrial Area',
+              'addressLocality' => 'S.A.S. Nagar, Mohali',
+              'addressRegion' => 'Punjab',
+              'postalCode' => '160071',
+              'addressCountry' => 'IN'
+            ],
+            'sameAs' => [
+              'https://www.goodfirms.co/company/sortiq-solutions',
+              'https://www.upwork.com/ag/sortiqsolutions/',
+              'https://wa.me/919646522110'
+            ]
+          ],
+          [
+            '@type' => 'ProfessionalService',
+            '@id' => url('/') . '#localbusiness',
+            'name' => 'Sortiq Solutions',
+            'url' => url('/'),
+            'logo' => asset('frontend-assets/media/admin-use.png'),
+            'image' => asset('frontend-assets/media/admin-use.png'),
+            'telephone' => '+91 9646522110',
+            'email' => 'info@sortiqsolutions.com',
+            'priceRange' => '$$',
+            'address' => [
+              '@type' => 'PostalAddress',
+              'streetAddress' => 'E-51, Second Floor, Phase - 8, Industrial Area',
+              'addressLocality' => 'S.A.S. Nagar, Mohali',
+              'addressRegion' => 'Punjab',
+              'postalCode' => '160071',
+              'addressCountry' => 'IN'
+            ],
+            'geo' => [
+              '@type' => 'GeoCoordinates',
+              'latitude' => 30.7046,
+              'longitude' => 76.7179
+            ],
+            'openingHoursSpecification' => [
+              [
+                '@type' => 'OpeningHoursSpecification',
+                'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                'opens' => '09:30',
+                'closes' => '18:30'
+              ]
+            ],
+            'areaServed' => ['Worldwide', 'India', 'United States', 'United Kingdom', 'Canada', 'Australia']
+          ],
+          [
+            '@type' => 'WebSite',
+            '@id' => url('/') . '#website',
+            'url' => url('/'),
+            'name' => 'Sortiq Solutions',
+            'publisher' => [
+              '@id' => url('/') . '#organization'
+            ],
+            'inLanguage' => 'en-US'
+          ]
+        ]
+      ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+      </script>
+      {!! $customCode['head'] ?? '' !!}
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">

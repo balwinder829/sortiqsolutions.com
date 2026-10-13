@@ -468,7 +468,8 @@
 
 @section('content')
 <main class="sortiq-home font-raleway"><div class="font-raleway">
-<iframe src="https://slides-jatin-choudhary.vercel.app/" class="sortiq-home-slider-iframe" title="Sortiq Home Slider" scrolling="no"></iframe>
+<h1 class="sr-only">Sortiq Solutions | Leading Web Development, Mobile Apps &amp; Digital Marketing Company</h1>
+<iframe src="https://slides-jatin-choudhary.vercel.app/" class="sortiq-home-slider-iframe" title="Sortiq Solutions - Web &amp; Mobile App Development" loading="lazy" scrolling="no"></iframe>
 <section class="hm-why-section">
   <div class="max-w-[1200px] mx-auto px-4 w-full hm-why-container">
     <div class="hm-why-head">
@@ -479,28 +480,28 @@
       <div class="w-full">
         <div class="hm-why-card">
           <div class="hm-why-icon"><img src="{{ asset('frontend-assets/media/home/why-us/tech-expertise-image.webp') }}" alt="Tech Expertise" loading="lazy" decoding="async"></div>
-          <h5>Strategy-First Approach</h5>
+          <h3>Strategy-First Approach</h3>
           <p>We start with understanding your business goals and target audience. Every website and marketing campaign is built with a clear strategy to drive growth and leads.</p>
         </div>
       </div>
       <div class="w-full">
         <div class="hm-why-card">
           <div class="hm-why-icon"><img src="{{ asset('frontend-assets/media/home/why-us/custom-solutions-image.webp') }}" alt="Custom Solutions" loading="lazy" decoding="async"></div>
-          <h5>ConverDriven Development</h5>
+          <h3>ConverDriven Development</h3>
           <p>Our websites are designed to do more than just look good. We create user-focused, SEO-friendly content that turns visitors into paying clients.</p>
         </div>
       </div>
       <div class="w-full">
         <div class="hm-why-card">
           <div class="hm-why-icon"><img src="{{ asset('frontend-assets/media/home/why-us/quality-and-timeless-image.webp') }}" alt="Quality &amp; Timeliness" loading="lazy" decoding="async"></div>
-          <h5>Data-Driven Marketing</h5>
+          <h3>Data-Driven Marketing</h3>
           <p>To optimize campaigns, we rely on tracking, analytics, and actual performance data. Every decision is driven by insights to maximize ROI and reduce wasted ad spend.</p>
         </div>
       </div>
       <div class="w-full">
         <div class="hm-why-card">
           <div class="hm-why-icon"><img src="{{ asset('frontend-assets/media/home/why-us/online-support-icon.webp') }}" alt="On-Going Support" loading="lazy" decoding="async"></div>
-          <h5>Long-Term Growth Partner</h5>
+          <h3>Long-Term Growth Partner</h3>
           <p>We don’t disappear after launch. From ongoing optimization and support to scaling your digital presence, we work as a long-term partner in your business growth.</p>
         </div>
       </div>
@@ -625,7 +626,7 @@
               >
               <div class="hm-video-overlay">
                 <div class="hm-video-top">
-                  <h4 class="hm-video-card-title">{{ $videoTitle }}</h4>
+                  <h3 class="hm-video-card-title">{{ $videoTitle }}</h3>
                 </div>
                 <div class="hm-video-play-wrap" aria-hidden="true">
                   <svg class="hm-video-play-svg" viewBox="0 0 68 48">
@@ -643,7 +644,7 @@
       @endforeach
     </div>
     <div class="hm-videos-footer">
-      <a href="https://www.youtube.com/@SortiqSolutions" target="_blank" rel="noopener" class="hm-btn-orange">VIEW ALL</a>
+      <a href="https://www.youtube.com/@SortiqSolutions" target="_blank" rel="noopener" class="hm-btn-orange" aria-label="View all Sortiq Solutions portfolio and workflow videos on YouTube">VIEW ALL VIDEOS</a>
     </div>
   </div>
 </section>
@@ -653,7 +654,7 @@
   <div class="sq-video-modal-backdrop" data-close-video-modal></div>
   <div class="sq-video-modal-dialog">
     <div class="sq-video-modal-header">
-      <h3 id="sqVideoModalTitle" class="sq-video-modal-title"></h3>
+      <div id="sqVideoModalTitle" class="sq-video-modal-title" role="heading" aria-level="3">Video Player</div>
       <button type="button" class="sq-video-modal-close" data-close-video-modal aria-label="Close video player">
         <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -678,7 +679,7 @@
       <div class="w-full">
         <div class="hm-service-card">
           <div class="hm-service-icon"><img src="{{ asset('frontend-assets/media/home/services/graphic-design-icon.png') }}" alt="Website Designing" loading="lazy" decoding="async"></div>
-          <h5>Website Designing</h5>
+          <h3>Website Designing</h3>
           <p>We create visually stunning and user-friendly websites, tailored to meet your business needs and elevate your online presence.</p>
           <a href="{{ url('/website-designing-company') }}" class="hm-service-arrow"><iconify-icon icon="fa6-solid:arrow-right" width="32"></iconify-icon></a>
         </div>
@@ -686,7 +687,7 @@
       <div class="w-full">
         <div class="hm-service-card">
           <div class="hm-service-icon"><img src="{{ asset('frontend-assets/media/home/services/website-development-icon.png') }}" alt="Website Development" loading="lazy" decoding="async"></div>
-          <h5>Website Development</h5>
+          <h3>Website Development</h3>
           <p>We provide customized, high-quality website development services to elevate your business online.</p>
           <a href="{{ url('/website-development-company') }}" class="hm-service-arrow"><iconify-icon icon="fa6-solid:arrow-right" width="32"></iconify-icon></a>
         </div>
@@ -694,7 +695,7 @@
       <div class="w-full">
         <div class="hm-service-card">
           <div class="hm-service-icon"><img src="{{ asset('frontend-assets/media/home/services/mobile-app-icon.png') }}" alt="Mobile App Dev" loading="lazy" decoding="async"></div>
-          <h5>Mobile App Dev</h5>
+          <h3>Mobile App Dev</h3>
           <p>Transforming ideas into reality with cutting-edge mobile app development solutions tailored to your business needs.</p>
           <a href="{{ url('/app-development-company') }}" class="hm-service-arrow"><iconify-icon icon="fa6-solid:arrow-right" width="32"></iconify-icon></a>
         </div>
@@ -702,7 +703,7 @@
       <div class="w-full">
         <div class="hm-service-card">
           <div class="hm-service-icon"><img src="{{ asset('frontend-assets/media/home/services/graphic-design-icon.png') }}" alt="Graphic Design" loading="lazy" decoding="async"></div>
-          <h5>Graphic Design</h5>
+          <h3>Graphic Design</h3>
           <p>Crafting visually stunning and impactful graphic designs to elevate your brand and captivate your audience.</p>
           <a href="{{ url('/graphic-designing-company') }}" class="hm-service-arrow"><iconify-icon icon="fa6-solid:arrow-right" width="32"></iconify-icon></a>
         </div>
@@ -710,7 +711,7 @@
       <div class="w-full">
         <div class="hm-service-card">
           <div class="hm-service-icon"><img src="{{ asset('frontend-assets/media/home/services/digital-marketing-icon.png') }}" alt="Digital Marketing" loading="lazy" decoding="async"></div>
-          <h5>Digital Marketing</h5>
+          <h3>Digital Marketing</h3>
           <p>Driving growth through strategic digital marketing solutions, tailored to boost your online presence and engagement.</p>
           <a href="{{ url('/digital-marketing-company') }}" class="hm-service-arrow"><iconify-icon icon="fa6-solid:arrow-right" width="32"></iconify-icon></a>
         </div>
@@ -718,7 +719,7 @@
       <div class="w-full">
         <div class="hm-service-card">
           <div class="hm-service-icon"><img src="{{ asset('frontend-assets/media/home/services/content-strategy-icon.png') }}" alt="Content Strategy" loading="lazy" decoding="async"></div>
-          <h5>Content Strategy</h5>
+          <h3>Content Strategy</h3>
           <p>Crafting impactful content strategies to effectively communicate your brand's story and engage your audience.</p>
           <a href="{{ url('/seo-company') }}" class="hm-service-arrow"><iconify-icon icon="fa6-solid:arrow-right" width="32"></iconify-icon></a>
         </div>
@@ -726,7 +727,7 @@
       <div class="w-full">
         <div class="hm-service-card">
           <div class="hm-service-icon"><img src="{{ asset('frontend-assets/media/home/services/framework-development-icon.png') }}" alt="Framework" loading="lazy" decoding="async"></div>
-          <h5>Framework</h5>
+          <h3>Framework</h3>
           <p>Empowering web applications with robust frameworks like CodeIgniter and Laravel for seamless performance and scalability.</p>
           <a href="{{ url('/laravel-development-company') }}" class="hm-service-arrow"><iconify-icon icon="fa6-solid:arrow-right" width="32"></iconify-icon></a>
         </div>
@@ -734,7 +735,7 @@
       <div class="w-full">
         <div class="hm-service-card">
           <div class="hm-service-icon"><img src="{{ asset('frontend-assets/media/home/services/cms-icon.png') }}" alt="CMS Solutions" loading="lazy" decoding="async"></div>
-          <h5>CMS Solutions</h5>
+          <h3>CMS Solutions</h3>
           <p>Providing tailored CMS solutions with platforms like WordPress, ensuring flexibility, user-friendliness, and scalability for your website.</p>
           <a href="{{ url('/wordpress-development-company') }}" class="hm-service-arrow"><iconify-icon icon="fa6-solid:arrow-right" width="32"></iconify-icon></a>
         </div>
@@ -742,7 +743,7 @@
       <div class="w-full">
         <div class="hm-service-card">
           <div class="hm-service-icon"><img src="{{ asset('frontend-assets/media/home/services/mern-stack-development-icon.png') }}" alt="Mern Stack" loading="lazy" decoding="async"></div>
-          <h5>Mern Stack</h5>
+          <h3>Mern Stack</h3>
           <p>We leverage the power of the MERN stack (MongoDB, Express.js, React.js, and Node.js) to build high-performance web applications.</p>
           <a href="{{ url('/mern-stack-development-company') }}" class="hm-service-arrow"><iconify-icon icon="fa6-solid:arrow-right" width="32"></iconify-icon></a>
         </div>
@@ -766,7 +767,7 @@
       @foreach($homeClientLogos as $logo)
       <div class="hm-client-slide">
         <div class="hm-client-logo">
-          <img src="{{ $logo->logo_url }}" alt="{{ $logo->name }}" loading="lazy" decoding="async">
+          <img src="{{ $logo->logo_url }}" alt="{{ !empty($logo->name) ? $logo->name : 'Sortiq Solutions Client Partner' }}" loading="lazy" decoding="async">
         </div>
       </div>
       @endforeach
@@ -775,14 +776,14 @@
       @foreach($homeClientLogos as $logo)
       <div class="hm-client-slide">
         <div class="hm-client-logo">
-          <img src="{{ $logo->logo_url }}" alt="{{ $logo->name }}" loading="lazy" decoding="async">
+          <img src="{{ $logo->logo_url }}" alt="{{ !empty($logo->name) ? $logo->name : 'Sortiq Solutions Client Partner' }}" loading="lazy" decoding="async">
         </div>
       </div>
       @endforeach
     </div>
   </div>
       <div class="text-center mt-5">
-      <a href="/clients/" class="hm-btn-orange">VIEW ALL</a>
+      <a href="/clients/" class="hm-btn-orange" aria-label="View all Sortiq Solutions global clients and partners">VIEW ALL CLIENTS</a>
     </div>
   </div>
 </section>
@@ -839,8 +840,8 @@
 
       @foreach($homeReviews as $index => $testimonial)
         <button class="hm-ts-thumb {{ $index === 0 ? 'active' : '' }}">
-          <img src="{{ asset('frontend-assets/media/imports/sortiqsolutions/2024/12/img' . (($index % 6) + 1) . '.jpg') }}" alt="{{ $testimonial->name }}" loading="lazy" decoding="async">
-          <span>{{ $testimonial->name }}</span>
+          <img src="{{ asset('frontend-assets/media/imports/sortiqsolutions/2024/12/img' . (($index % 6) + 1) . '.jpg') }}" alt="{{ !empty($testimonial->name) ? $testimonial->name : 'Client Reviewer ' . ($index + 1) }}" loading="lazy" decoding="async">
+          <span>{{ $testimonial->name ?: 'Client' }}</span>
         </button>
       @endforeach
       </div>
@@ -856,28 +857,28 @@
       <div class="w-full">
         <div class="hm-stat-box">
           <div class="hm-stat-icon"><img src="{{ asset('frontend-assets/media/home/stats/projects-icon.png') }}" alt="Projects" loading="lazy" decoding="async"></div>
-          <h2 class="hm-stat-num" data-target="750">0</h2><span class="hm-stat-plus">+</span>
+          <span class="hm-stat-num" data-target="750">0</span><span class="hm-stat-plus">+</span>
           <p>PROJECTS</p>
         </div>
       </div>
       <div class="w-full">
         <div class="hm-stat-box">
           <div class="hm-stat-icon"><img src="{{ asset('frontend-assets/media/home/stats/happy-clients.png') }}" alt="Clients" loading="lazy" decoding="async"></div>
-          <h2 class="hm-stat-num" data-target="225">0</h2><span class="hm-stat-plus">+</span>
+          <span class="hm-stat-num" data-target="225">0</span><span class="hm-stat-plus">+</span>
           <p>CLIENTS</p>
         </div>
       </div>
       <div class="w-full">
         <div class="hm-stat-box">
           <div class="hm-stat-icon"><img src="{{ asset('frontend-assets/media/home/stats/country-vector.png') }}" alt="Countries" loading="lazy" decoding="async"></div>
-          <h2 class="hm-stat-num" data-target="30">0</h2><span class="hm-stat-plus">+</span>
+          <span class="hm-stat-num" data-target="30">0</span><span class="hm-stat-plus">+</span>
           <p>COUNTRIES</p>
         </div>
       </div>
       <div class="w-full">
         <div class="hm-stat-box">
           <div class="hm-stat-icon"><img src="{{ asset('frontend-assets/media/home/stats/happy-face-icon.png') }}" alt="Happy Clients" loading="lazy" decoding="async"></div>
-          <h2 class="hm-stat-num" data-target="150">0</h2><span class="hm-stat-plus">+</span>
+          <span class="hm-stat-num" data-target="150">0</span><span class="hm-stat-plus">+</span>
           <p>HAPPY CLIENTS</p>
         </div>
       </div>
@@ -903,7 +904,7 @@
             <div class="hm-blog-card">
               <div class="hm-blog-img">
                 <a href="{{ route('frontend.blog.show', $blog->slug) }}">
-                  <img src="{{ $blog->image_url ?: asset('frontend-assets/media/blog-placeholder.jpg') }}" alt="{{ $blog->title }}" loading="lazy" decoding="async">
+                  <img src="{{ $blog->image_url ?: asset('frontend-assets/media/blog-placeholder.jpg') }}" alt="{{ !empty($blog->title) ? $blog->title : 'Sortiq Solutions Tech Article' }}" loading="lazy" decoding="async">
                 </a>
               </div>
               <div class="hm-blog-body">
@@ -926,7 +927,7 @@
       </div>
     </div>
       <div class="text-center mt-5">
-      <a href="/blog/" class="hm-btn-orange" style="border-radius: 50px; padding: 8px 25px; font-weight: 700;">VIEW ALL</a>
+      <a href="/blog/" class="hm-btn-orange" style="border-radius: 50px; padding: 8px 25px; font-weight: 700;" aria-label="View all latest technology and development blog insights">VIEW ALL INSIGHTS</a>
     </div>
   </div>
 </section>

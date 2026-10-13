@@ -41,6 +41,26 @@ class RobotsController extends Controller
 
         // Otherwise, allow crawling and append specific disallow rules
         $rules = [];
+
+        // Search Engines & Generative AI Crawlers (GEO compliance)
+        $bots = [
+            'Googlebot',
+            'Bingbot',
+            'Applebot',
+            'Applebot-Extended',
+            'GPTBot',
+            'ChatGPT-User',
+            'ClaudeBot',
+            'Claude-Web',
+            'PerplexityBot',
+            'Amazonbot',
+        ];
+        foreach ($bots as $bot) {
+            $rules[] = "User-agent: {$bot}";
+            $rules[] = "Allow: /";
+            $rules[] = "";
+        }
+
         $rules[] = "User-agent: *";
         $rules[] = "Allow: /";
 

@@ -226,7 +226,7 @@
                 return $chunk->map(function($logo) {
                     return [
                         'url' => $logo->logo_url,
-                        'alt' => $logo->name
+                        'alt' => !empty($logo->name) ? $logo->name : 'Sortiq Solutions Client Partner'
                     ];
                 })->values();
             })->values()) !!}

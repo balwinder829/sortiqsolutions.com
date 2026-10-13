@@ -81,8 +81,8 @@
                 <div class="bg-[#ff6600] p-3 rounded-xl text-white h-fit shadow-lg shadow-orange-100 transition-transform group-hover:scale-110"><iconify-icon icon="lucide:mail" width="20" height="20"></iconify-icon></div>
                 <div>
                   <p class="font-extrabold text-[#001a3d] text-xs uppercase tracking-widest mb-1">WRITE US</p>
-                  <a href="mailto:info@sortiqsolutions.com" class="text-gray-600 font-semibold block hover:text-[#ff6600] transition-colors break-all">info@sortiqsolutions.com</a>
-                  <a href="mailto:sortiqsolutions@gmail.com" class="text-gray-600 font-semibold block hover:text-[#ff6600] transition-colors break-all">sortiqsolutions@gmail.com</a>
+                  <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#115;&#111;&#114;&#116;&#105;&#113;&#115;&#111;&#108;&#117;&#116;&#105;&#111;&#110;&#115;&#46;&#99;&#111;&#109;" class="text-gray-600 font-semibold block hover:text-[#ff6600] transition-colors break-all">&#105;&#110;&#102;&#111;&#64;&#115;&#111;&#114;&#116;&#105;&#113;&#115;&#111;&#108;&#117;&#116;&#105;&#111;&#110;&#115;&#46;&#99;&#111;&#109;</a>
+                  <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#111;&#114;&#116;&#105;&#113;&#115;&#111;&#108;&#117;&#116;&#105;&#111;&#110;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" class="text-gray-600 font-semibold block hover:text-[#ff6600] transition-colors break-all">&#115;&#111;&#114;&#116;&#105;&#113;&#115;&#111;&#108;&#117;&#116;&#105;&#111;&#110;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
                 </div>
               </div>
               <div class="flex gap-4 group">

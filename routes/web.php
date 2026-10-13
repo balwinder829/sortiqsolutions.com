@@ -98,6 +98,14 @@ $registerAdminResourceRoutes = function (string $prefix, string $name, string $c
 Route::get($customPaths['frontend.home'] ?? '/', [FrontendHomeController::class, 'index'])->name('frontend.home');
 Route::get('/robots.txt', [\App\Http\Controllers\RobotsController::class, '__invoke'])->name('robots');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+Route::get('/llms.txt', function () {
+    $path = public_path('llms.txt');
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response(file_get_contents($path), 200)
+        ->header('Content-Type', 'text/plain; charset=UTF-8');
+})->name('llms');
 Route::redirect('/sitemap_index.xml', '/sitemap.xml', 301);
 Route::redirect('/sortiqsolution', '/', 301);
 

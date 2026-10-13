@@ -1546,16 +1546,6 @@ button {
 
 }
 
-
-
-.sq-whatsapp:hover,
-
-   NEW HOMEPAGE STYLES (hm-* prefix) â€” agency landing reference
-
-   ============================================================ */
-
-
-
 .hm-orange {
 
   color: #ff6600 !important;
@@ -2782,7 +2772,8 @@ button {
 
 
 
-.hm-why-card h5 {
+.hm-why-card h5,
+.hm-why-card h3 {
 
   font-family: 'Nunito';
 
@@ -3472,7 +3463,8 @@ button {
 
 
 
-.hm-service-card h5 {
+.hm-service-card h5,
+.hm-service-card h3 {
 
   font-size: 26px;
 
@@ -4498,7 +4490,8 @@ TESTIMONIALS RESPONSIVE
 
 
 
-.hm-stat-box h2 {
+.hm-stat-box h2,
+.hm-stat-box .hm-stat-num {
 
   font-size: 60px;
 
@@ -4960,7 +4953,8 @@ TESTIMONIALS RESPONSIVE
 
 
 
-  .hm-stat-box h2 {
+  .hm-stat-box h2,
+  .hm-stat-box .hm-stat-num {
 
     font-size: 2rem;
 
@@ -5222,6 +5216,7 @@ TESTIMONIALS RESPONSIVE
 
 /* Responsive Header & Top Bar Navigation */
 @media (max-width: 1200px) {
+
   .sq-pro-menu,
   .sq-pro-actions {
     display: none !important;
@@ -5300,19 +5295,19 @@ TESTIMONIALS RESPONSIVE
   .sq-pro-footer .sq-footer-grid-pro {
     grid-template-columns: 1fr;
   }
-  
+
   .sq-pro-footer .sq-footer-top {
     flex-direction: column;
     gap: 30px;
   }
-  
+
   .sq-pro-footer .sq-footer-badges {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
   }
-  
+
   .sq-pro-footer .sq-footer-contact-row {
     flex-direction: column;
     align-items: center;
@@ -5320,7 +5315,7 @@ TESTIMONIALS RESPONSIVE
     text-align: center;
     width: 100%;
   }
-  
+
   .sq-pro-footer .sq-footer-contact-row a,
   .sq-pro-footer .sq-footer-contact-row div {
     justify-content: center;
@@ -5332,9 +5327,9 @@ TESTIMONIALS RESPONSIVE
     flex-direction: column;
     gap: 20px;
     text-align: center;
-    padding-bottom: 110px; 
+    padding-bottom: 110px;
   }
-  
+
   .sq-pro-footer .sq-footer-socials {
     justify-content: center;
     flex-wrap: wrap;

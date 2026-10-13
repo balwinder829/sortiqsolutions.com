@@ -11,91 +11,98 @@ use Illuminate\Support\Facades\DB;
 class RobotsSettingController extends Controller
 {
     /**
-     * Show the robots.txt settings form.
+     * Show the simple robots.txt editor form.
      */
     public function edit()
     {
-        $settings = RobotsSetting::firstOrCreate(
-            ['id' => 1],
-            RobotsSetting::defaults()
-        );
+        $filePath = public_path('robots.txt');
+        if (file_exists($filePath) && is_readable($filePath)) {
+            $content = file_get_contents($filePath);
+        } else {
+            $settings = RobotsSetting::firstOrCreate(
+                ['id' => 1],
+                RobotsSetting::defaults()
+            );
+            $content = $settings->custom_rules ?: "User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: " . url('/sitemap.xml');
+        }
 
-        return view('admin.robots.settings', compact('settings'));
+        return view('admin.robots.settings', compact('content'));
     }
 
     /**
-     * Update the robots.txt settings.
+     * Update the robots.txt content directly.
      */
     public function update(RobotsSettingRequest $request)
     {
-        DB::transaction(function () use ($request) {
-            $settings = RobotsSetting::firstOrCreate(['id' => 1], RobotsSetting::defaults());
+        $content = (string) $request->input('content', '');
 
-            $mode = $request->input('crawling_mode');
+        // Write directly to public/robots.txt
+        try {
+            file_put_contents(public_path('robots.txt'), $content);
+        } catch (\Throwable $e) {
+            // Log if filesystem error
+            logger()->error('Failed to write robots.txt: ' . $e->getMessage());
+        }
 
-            if ($mode === 'production') {
-                $data = [
-                    'crawling_mode' => 'production',
-                    'allow_frontend' => true,
-                    'block_backend' => true,
-                    'block_api' => true,
-                    'block_login' => true,
-                    'include_sitemap' => true,
-                    'block_images' => false,
-                    'block_css' => false,
-                    'block_js' => false,
-                    'custom_rules' => $request->input('custom_rules'),
-                ];
-            } elseif ($mode === 'maintenance' || $mode === 'development') {
-                $data = [
-                    'crawling_mode' => $mode,
-                    'allow_frontend' => false,
-                    'block_backend' => false,
-                    'block_api' => false,
-                    'block_login' => false,
-                    'include_sitemap' => false,
-                    'block_images' => false,
-                    'block_css' => false,
-                    'block_js' => false,
-                    'custom_rules' => $request->input('custom_rules'),
-                ];
-            } else { // custom mode
-                $data = [
+        // Also save to database
+        try {
+            DB::transaction(function () use ($content) {
+                $settings = RobotsSetting::firstOrCreate(['id' => 1], RobotsSetting::defaults());
+                $settings->update([
                     'crawling_mode' => 'custom',
-                    'allow_frontend' => $request->boolean('allow_frontend'),
-                    'block_backend' => $request->boolean('block_backend'),
-                    'block_api' => $request->boolean('block_api'),
-                    'block_login' => $request->boolean('block_login'),
-                    'include_sitemap' => $request->boolean('include_sitemap'),
-                    'block_images' => $request->boolean('block_images'),
-                    'block_css' => $request->boolean('block_css'),
-                    'block_js' => $request->boolean('block_js'),
-                    'custom_rules' => $request->input('custom_rules'),
-                ];
-            }
-
-            $settings->update($data);
-        });
+                    'custom_rules' => $content,
+                ]);
+            });
+        } catch (\Throwable $e) {
+            logger()->error('Failed to update robots_settings in DB: ' . $e->getMessage());
+        }
 
         Cache::forget('robots_txt_settings');
 
         return redirect()->route('admin.robots-settings.edit')
-            ->with('status', 'Robots.txt settings updated successfully!');
+            ->with('status', 'Robots.txt file saved successfully!');
     }
 
     /**
-     * Reset the robots.txt settings to recommended defaults.
+     * Reset the robots.txt file to recommended defaults.
      */
     public function reset()
     {
-        DB::transaction(function () {
-            $settings = RobotsSetting::firstOrCreate(['id' => 1], RobotsSetting::defaults());
-            $settings->update(RobotsSetting::defaults());
-        });
+        $defaultContent = "# Robots.txt for Sortiq Solutions\n"
+            . "User-agent: Googlebot\nAllow: /\n\n"
+            . "User-agent: Bingbot\nAllow: /\n\n"
+            . "User-agent: Applebot\nAllow: /\n\n"
+            . "User-agent: GPTBot\nAllow: /\n\n"
+            . "User-agent: ClaudeBot\nAllow: /\n\n"
+            . "User-agent: PerplexityBot\nAllow: /\n\n"
+            . "User-agent: *\n"
+            . "Allow: /\n"
+            . "Disallow: /admin/\n"
+            . "Disallow: /sortiqadmin/\n"
+            . "Disallow: /api/\n"
+            . "Disallow: /login\n"
+            . "Disallow: /logout\n"
+            . "Disallow: /register\n"
+            . "Disallow: /password/\n\n"
+            . "Sitemap: " . url('/sitemap.xml');
+
+        try {
+            file_put_contents(public_path('robots.txt'), $defaultContent);
+        } catch (\Throwable $e) {}
+
+        try {
+            DB::transaction(function () use ($defaultContent) {
+                $settings = RobotsSetting::firstOrCreate(['id' => 1], RobotsSetting::defaults());
+                $settings->update([
+                    'crawling_mode' => 'production',
+                    'custom_rules' => $defaultContent,
+                ]);
+            });
+        } catch (\Throwable $e) {}
 
         Cache::forget('robots_txt_settings');
 
         return redirect()->route('admin.robots-settings.edit')
-            ->with('status', 'Robots.txt settings reset to recommended defaults.');
+            ->with('status', 'Robots.txt reset to recommended defaults.');
     }
 }

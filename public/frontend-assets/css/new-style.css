@@ -1746,186 +1746,165 @@ button {
 
   margin-bottom: 45px;
 
-}
-
-
-
-.hm-cert-slider {
-
+}.hm-cert-slider {
   position: relative;
-
   width: 100%;
-
-  max-width: 1250px;
-
-  margin: auto;
-
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px;
+  box-sizing: border-box;
 }
-
-
 
 .hm-cert-viewport {
-
-  overflow: hidden;
-
+  position: relative;
+  overflow: hidden !important;
+  width: 100%;
+  border-radius: 16px;
 }
-
-
 
 .hm-cert-track {
-
-  display: flex;
-
-  gap: 24px;
-
-  transition: transform .5s ease;
-
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 24px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  will-change: transform;
+  box-sizing: border-box;
 }
-
-
 
 .hm-cert-card {
-
-  min-width: calc(33.333% - 16px);
-
-  background: #fff;
-
+  flex: 0 0 calc((100% - 48px) / 3) !important;
+  width: calc((100% - 48px) / 3) !important;
+  max-width: calc((100% - 48px) / 3) !important;
+  min-width: calc((100% - 48px) / 3) !important;
+  box-sizing: border-box !important;
+  background: #ffffff;
+  border-radius: 16px;
   overflow: hidden;
-
-  flex-shrink: 0;
-
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
+.hm-cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
 
 .hm-cert-card img {
-
-  width: 100%;
-
-  height: 360px;
-
-  object-fit: cover;
-
-  display: block;
-
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 16px;
 }
 
-
-
-/* ARROWS */
-
-
-
+/* NAVIGATION ARROWS */
+.hm-cert-nav,
 .hm-cert-btn {
-
   position: absolute;
-
   top: 50%;
-
   transform: translateY(-50%);
-
-  width: 54px;
-
-  height: 54px;
-
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-
-  border: none;
-
+  background: #00173e;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
   color: #fff !important;
-
-  font-size: 26px;
-
   cursor: pointer;
-
   z-index: 10;
-
-  transition: .3s;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  padding: 0;
 }
 
-
+.hm-cert-nav:hover,
+.hm-cert-btn:hover {
+  background: #ff6600;
+  border-color: #ff6600;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 18px rgba(255, 102, 0, 0.35);
+}
 
 .hm-cert-prev {
-
-  left: -20px;
-
+  left: 0;
 }
-
-
 
 .hm-cert-next {
-
-  right: -20px;
-
+  right: 0;
 }
 
+.hm-cert-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+}
 
+.hm-cert-dot {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+.hm-cert-dot.active {
+  width: 28px;
+  background: #ff6600;
+}
 
 /* TABLET */
-
-
-
-@media (max-width: 991px) {
-
-
+@media (max-width: 1023px) and (min-width: 640px) {
+  .hm-cert-track {
+    gap: 20px !important;
+  }
 
   .hm-cert-card {
-
-    min-width: calc(50% - 12px);
-
+    flex: 0 0 calc((100% - 20px) / 2) !important;
+    width: calc((100% - 20px) / 2) !important;
+    max-width: calc((100% - 20px) / 2) !important;
+    min-width: calc((100% - 20px) / 2) !important;
   }
-
-
-
-  .hm-cert-card img {
-
-    height: 320px;
-
-  }
-
-
-
 }
 
-
-
 /* MOBILE */
+@media (max-width: 639px) {
+  .hm-cert-slider {
+    padding: 0 38px;
+  }
 
-
-
-@media (max-width: 767px) {
-
-
+  .hm-cert-track {
+    gap: 16px !important;
+  }
 
   .hm-cert-card {
-
-    min-width: 100%;
-
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
   }
 
-
-
-  .hm-cert-card img {
-
-    height: 300px;
-
-  }
-
-
-
+  .hm-cert-nav,
   .hm-cert-btn {
-
-    width: 42px;
-
-    height: 42px;
-
-    font-size: 20px;
-
+    width: 32px;
+    height: 32px;
   }
 
-
-
+  .hm-cert-nav svg,
+  .hm-cert-btn svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 
@@ -3217,141 +3196,7 @@ button {
 
 
 
-.hm-cert-slider {
-
-  position: relative;
-
-  overflow: hidden;
-
-  margin-top: 40px;
-
-}
-
-
-
-.hm-cert-track {
-
-  display: flex;
-
-  gap: 8px;
-
-  scroll-snap-type: x mandatory;
-
-  scroll-behavior: smooth;
-
-  padding: 16px 65px;
-
-}
-
-
-
-.hm-cert-track::-webkit-scrollbar {
-
-  display: none;
-
-}
-
-
-
-.hm-cert-card {
-
-  flex: 0 0 auto;
-
-  width: 280px;
-
-  scroll-snap-align: center;
-
-  overflow: hidden;
-
-  background: transparent;
-
-}
-
-
-
-.hm-cert-card img {
-
-  width: 100%;
-
-  height: auto;
-
-  display: block;
-
-  object-fit: cover;
-
-}
-
-
-
-.hm-cert-prev,
-
-.hm-cert-next {
-
-  position: absolute;
-
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  width: 46px;
-
-  height: 46px;
-
-  border-radius: 50%;
-
-  background: none !important;
-
-  display: grid;
-
-  color: #fff !important;
-
-  place-items: center;
-
-  cursor: pointer;
-
-  z-index: 2;
-
-}
-
-
-
-.hm-cert-prev {
-
-  left: 14px;
-
-}
-
-
-
-.hm-cert-next {
-
-  right: 14px;
-
-}
-
-
-
-@media (max-width: 768px) {
-
-
-
-  .hm-cert-prev,
-
-  .hm-cert-next {
-
-    display: none;
-
-  }
-
-
-
-  .hm-cert-card {
-
-    width: 220px;
-
-  }
-
-}
+/* End cert slider overrides */
 
 
 

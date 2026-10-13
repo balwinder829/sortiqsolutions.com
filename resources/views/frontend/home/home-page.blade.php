@@ -28,45 +28,123 @@
             height: 560px;
           }
         }
-        .hm-cert-slider { display: block; }
-        .hm-cert-viewport { width: 100%; overflow: hidden; }
+        .hm-cert-slider {
+          position: relative;
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 50px;
+          box-sizing: border-box;
+        }
+        .hm-cert-viewport {
+          position: relative;
+          width: 100%;
+          overflow: hidden !important;
+          border-radius: 16px;
+        }
         .hm-cert-track {
-          display: flex;
-          gap: 24px;
-          transition: transform .65s cubic-bezier(.22, 1, .36, 1);
+          display: flex !important;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          gap: 24px !important;
+          padding: 0 !important;
+          margin: 0 !important;
           will-change: transform;
+          box-sizing: border-box;
         }
         .hm-cert-card {
-          flex: 0 0 calc((100% - 48px) / 3);
-          min-width: 0;
+          flex: 0 0 calc((100% - 48px) / 3) !important;
+          width: calc((100% - 48px) / 3) !important;
+          max-width: calc((100% - 48px) / 3) !important;
+          min-width: calc((100% - 48px) / 3) !important;
+          box-sizing: border-box !important;
+          background: #ffffff;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .hm-cert-card img { display: block; width: 100%; height: auto; }
+        .hm-cert-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+        }
+        .hm-cert-card img {
+          display: block !important;
+          width: 100% !important;
+          height: auto !important;
+          aspect-ratio: 1 / 1;
+          object-fit: cover !important;
+          border-radius: 16px;
+        }
+        .hm-cert-nav {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          background: #00173e;
+          border: 1.5px solid rgba(255, 255, 255, 0.25);
+          color: #ffffff !important;
+          cursor: pointer;
+          z-index: 10;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.25s ease;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+          padding: 0;
+        }
+        .hm-cert-nav:hover {
+          background: #ff6600;
+          border-color: #ff6600;
+          transform: translateY(-50%) scale(1.08);
+          box-shadow: 0 6px 18px rgba(255, 102, 0, 0.35);
+        }
+        .hm-cert-prev { left: 0; }
+        .hm-cert-next { right: 0; }
         .hm-cert-dots {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 9px;
-          margin-top: 28px;
+          gap: 8px;
+          margin-top: 26px;
         }
         .hm-cert-dot {
           appearance: none;
-          width: 9px;
-          height: 9px;
+          width: 10px;
+          height: 10px;
           padding: 0;
           border: 0;
           border-radius: 999px;
-          background: rgba(255,255,255,.42);
+          background: rgba(255, 255, 255, 0.35);
           cursor: pointer;
-          transition: width .35s ease, background-color .35s ease, transform .35s ease;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .hm-cert-dot.active {
           width: 28px;
-          background: #ff6a00;
-          transform: scaleY(1.1);
+          background: #ff6600;
         }
-        @media (max-width: 767px) {
-          .hm-cert-track { gap: 16px; }
-          .hm-cert-card { flex-basis: 100%; }
+        @media (max-width: 1023px) and (min-width: 640px) {
+          .hm-cert-track { gap: 20px !important; }
+          .hm-cert-card {
+            flex: 0 0 calc((100% - 20px) / 2) !important;
+            width: calc((100% - 20px) / 2) !important;
+            max-width: calc((100% - 20px) / 2) !important;
+            min-width: calc((100% - 20px) / 2) !important;
+          }
+        }
+        @media (max-width: 639px) {
+          .hm-cert-slider { padding: 0 38px; }
+          .hm-cert-track { gap: 16px !important; }
+          .hm-cert-card {
+            flex: 0 0 100% !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 100% !important;
+          }
+          .hm-cert-nav { width: 32px; height: 32px; }
+          .hm-cert-nav svg { width: 16px; height: 16px; }
         }
         .hm-video-card {
           position: relative;
@@ -559,11 +637,13 @@
     </div>
 
     <div class="hm-cert-slider">
+      <button type="button" class="hm-cert-nav hm-cert-prev" aria-label="Previous certificate">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
       <!-- SLIDER -->
       <div class="hm-cert-viewport">
-
         <div class="hm-cert-track">
-
           <!-- CARD -->
           <div class="hm-cert-card">
             <img src="{{ asset('frontend-assets/media/home/badges/wix-web-designer-300x300.jpg') }}" alt="Wix Web Designer" loading="lazy" decoding="async">
@@ -580,13 +660,14 @@
           <div class="hm-cert-card">
             <img src="{{ asset('frontend-assets/media/home/badges/wix-studio-300x300.jpg') }}" alt="Wix Studio" loading="lazy" decoding="async">
           </div>
-
         </div>
-
       </div>
 
-      <div class="hm-cert-dots" aria-label="Certificate slides"></div>
+      <button type="button" class="hm-cert-nav hm-cert-next" aria-label="Next certificate">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
 
+      <div class="hm-cert-dots" aria-label="Certificate slides"></div>
     </div>
 
   </div>
@@ -1139,184 +1220,348 @@
   observer.observe(section);
 })();
 
-document.addEventListener("DOMContentLoaded", function () {
-  var track = document.querySelector(".hm-cert-track");
-  var viewport = document.querySelector(".hm-cert-viewport");
-  var dotsWrap = document.querySelector(".hm-cert-dots");
-  var cards = track ? Array.from(track.querySelectorAll(".hm-cert-card")) : [];
-  if (!track || !viewport || !dotsWrap || !cards.length) return;
+(function initCertSlider() {
+  function start() {
+    var track = document.querySelector(".hm-cert-track");
+    var viewport = document.querySelector(".hm-cert-viewport");
+    var dotsWrap = document.querySelector(".hm-cert-dots");
+    var prevBtn = document.querySelector(".hm-cert-prev");
+    var nextBtn = document.querySelector(".hm-cert-next");
+    var slider = document.querySelector(".hm-cert-slider");
 
-  /* Repeat the first two cards so every desktop position still shows three. */
-  cards.slice(0, 2).forEach(function (card) {
-    var clone = card.cloneNode(true);
-    clone.setAttribute("aria-hidden", "true");
-    track.appendChild(clone);
-  });
+    if (!track || !viewport) return;
+    if (track.dataset.certInitialized === "true") return;
+    track.dataset.certInitialized = "true";
 
-  var current = 0;
-  var timer;
+    var originalCards = Array.from(track.querySelectorAll(".hm-cert-card"));
+    var N = originalCards.length;
+    if (N === 0) return;
 
-  function pageCount() {
-    return cards.length;
-  }
+    // Clone all original cards before and after for true infinite sliding
+    var firstOriginal = originalCards[0];
+    originalCards.forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.classList.add("hm-cert-clone");
+      track.insertBefore(clone, firstOriginal);
+    });
 
-  function cardStep() {
-    if (cards.length < 2) return cards[0].offsetWidth;
-    return cards[1].offsetLeft - cards[0].offsetLeft;
-  }
+    originalCards.forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.classList.add("hm-cert-clone");
+      track.appendChild(clone);
+    });
 
-  function renderDots() {
-    dotsWrap.innerHTML = "";
-    for (var i = 0; i < pageCount(); i++) {
-      var dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "hm-cert-dot" + (i === current ? " active" : "");
-      dot.setAttribute("aria-label", "Show certificate set " + (i + 1));
-      dot.dataset.index = i;
-      dot.addEventListener("click", function () {
-        goTo(Number(this.dataset.index));
+    // Track now has 3*N cards: [c0..c(N-1), o0..o(N-1), a0..a(N-1)]
+    // Initial current index is N (pointing to the original set)
+    var current = N;
+    var isMoving = false;
+    var timer = null;
+    var unlockTimeout = null;
+
+    function getStep() {
+      var allCards = track.querySelectorAll(".hm-cert-card");
+      if (allCards.length >= 2) {
+        var diff = allCards[1].offsetLeft - allCards[0].offsetLeft;
+        if (diff > 0) return diff;
+      }
+      var first = allCards[0];
+      if (first && first.offsetWidth > 0) {
+        var gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+        return first.offsetWidth + gap;
+      }
+      return viewport.clientWidth > 0 ? ((viewport.clientWidth + 24) / 3) : 380;
+    }
+
+    function setPosition(index, animate) {
+      if (animate) {
+        track.style.transition = "transform 0.65s cubic-bezier(0.25, 1, 0.5, 1)";
+      } else {
+        track.style.transition = "none";
+      }
+      var step = getStep();
+      track.style.transform = "translateX(-" + (index * step) + "px)";
+    }
+
+    function getActiveDotIndex(idx) {
+      return ((idx - N) % N + N) % N;
+    }
+
+    function updateDots() {
+      if (!dotsWrap) return;
+      var activeIdx = getActiveDotIndex(current);
+      Array.from(dotsWrap.children).forEach(function (dot, i) {
+        dot.classList.toggle("active", i === activeIdx);
+      });
+    }
+
+    function renderDots() {
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = "";
+      for (var i = 0; i < N; i++) {
+        var dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "hm-cert-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("aria-label", "Show certificate " + (i + 1));
+        dot.dataset.index = i;
+        dot.addEventListener("click", function () {
+          if (isMoving) return;
+          var target = Number(this.dataset.index);
+          current = N + target;
+          isMoving = true;
+          setPosition(current, true);
+          updateDots();
+          restartAutoplay();
+        });
+        dotsWrap.appendChild(dot);
+      }
+    }
+
+    function slideNext() {
+      if (isMoving) return;
+      isMoving = true;
+      current++;
+      setPosition(current, true);
+      updateDots();
+
+      clearTimeout(unlockTimeout);
+      unlockTimeout = setTimeout(function () {
+        if (isMoving) handleLoopReset();
+      }, 700);
+    }
+
+    function slidePrev() {
+      if (isMoving) return;
+      isMoving = true;
+      current--;
+      setPosition(current, true);
+      updateDots();
+
+      clearTimeout(unlockTimeout);
+      unlockTimeout = setTimeout(function () {
+        if (isMoving) handleLoopReset();
+      }, 700);
+    }
+
+    function handleLoopReset() {
+      isMoving = false;
+      clearTimeout(unlockTimeout);
+      if (current >= 2 * N) {
+        current = current - N;
+        setPosition(current, false);
+        void track.offsetHeight;
+      } else if (current < N) {
+        current = current + N;
+        setPosition(current, false);
+        void track.offsetHeight;
+      }
+      updateDots();
+    }
+
+    track.addEventListener("transitionend", function (e) {
+      if (e.target !== track || e.propertyName !== "transform") return;
+      handleLoopReset();
+    });
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        slideNext();
         restartAutoplay();
       });
-      dotsWrap.appendChild(dot);
     }
-  }
 
-  function goTo(index) {
-    current = index % pageCount();
-    track.style.transform = "translateX(-" + (current * cardStep()) + "px)";
-    Array.from(dotsWrap.children).forEach(function (dot, i) {
-      dot.classList.toggle("active", i === current);
-    });
-  }
-
-  function restartAutoplay() {
-    clearInterval(timer);
-    if (pageCount() > 1) {
-      timer = setInterval(function () { goTo(current + 1); }, 3500);
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        slidePrev();
+        restartAutoplay();
+      });
     }
-  }
 
-  window.addEventListener("resize", function () {
-    current = Math.min(current, pageCount() - 1);
-    renderDots();
-    goTo(current);
-    restartAutoplay();
-  });
+    function restartAutoplay() {
+      clearInterval(timer);
+      timer = setInterval(slideNext, 2500);
+    }
 
-  renderDots();
-  goTo(0);
-  restartAutoplay();
+    function pauseAutoplay() {
+      clearInterval(timer);
+    }
 
-  viewport.addEventListener("mouseenter", function () { clearInterval(timer); });
-  viewport.addEventListener("mouseleave", restartAutoplay);
-});
+    if (slider) {
+      slider.addEventListener("mouseenter", pauseAutoplay);
+      slider.addEventListener("mouseleave", restartAutoplay);
+    }
 
-document.addEventListener("DOMContentLoaded", function() {
-  var track = document.getElementById("hmTsTrack");
-  var thumbs = document.querySelectorAll(".hm-ts-thumb");
-  var cards = track ? Array.from(track.querySelectorAll(".hm-ts-card")) : [];
-  var slider = document.querySelector(".hm-ts-slider");
-  if (!track || !cards.length || !thumbs.length || !slider) return;
+    // Touch Swipe
+    var touchStartX = 0;
+    var touchStartY = 0;
+    viewport.addEventListener("touchstart", function (e) {
+      pauseAutoplay();
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
 
-  // INFINITE LOOP SETUP: Clone elements for seamless transition
-  var firstClone = cards[0].cloneNode(true);
-  var lastClone = cards[cards.length - 1].cloneNode(true);
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, track.firstChild);
+    viewport.addEventListener("touchend", function (e) {
+      if (e.changedTouches.length === 1) {
+        var diffX = touchStartX - e.changedTouches[0].clientX;
+        var diffY = touchStartY - e.changedTouches[0].clientY;
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+          if (diffX > 0) {
+            slideNext();
+          } else {
+            slidePrev();
+          }
+        }
+      }
+      restartAutoplay();
+    }, { passive: true });
 
-  // Update cards array to include clones
-  var allCards = Array.from(track.querySelectorAll(".hm-ts-card"));
-  var totalReal = cards.length;
-  var current = 1; // Start at the first real card (after the lastClone)
-  var isTransitioning = false;
-
-  function getStep() {
-    var style = window.getComputedStyle(allCards[0]);
-    var margin = parseFloat(style.marginLeft || 0) + parseFloat(style.marginRight || 0);
-    return allCards[0].offsetWidth + margin;
-  }
-
-  function moveSlide(index, animate = true) {
-    if (isTransitioning && animate) return;
-    if (animate) isTransitioning = true;
-
-    current = index;
-    var step = getStep();
-    var sliderWidth = slider.offsetWidth;
-    var cardWidth = allCards[current].offsetWidth;
-    
-    // Centering the current card
-    var mainTranslateX = (sliderWidth / 2) - (cardWidth / 2) - (current * step);
-    
-    track.style.transition = animate ? "transform .85s cubic-bezier(.16, 1, .3, 1)" : "none";
-    track.style.transform = "translateX(" + mainTranslateX + "px)";
-
-    // Update active states
-    var realIdx = (current - 1 + totalReal) % totalReal;
-    
-    allCards.forEach(function(card, idx) {
-      card.classList.toggle("active", idx === current);
-    });
-
-    thumbs.forEach(function(thumb, idx) {
-      var isCenter = (idx === realIdx);
-      var isPrev = (idx === (realIdx - 1 + totalReal) % totalReal);
-      var isNext = (idx === (realIdx + 1) % totalReal);
-      
-      thumb.classList.toggle("active", isCenter);
-      
-      // Only show current, previous and next
-      if (isCenter || isPrev || isNext) {
-        thumb.style.display = "flex";
-        thumb.style.opacity = isCenter ? "1" : "0.4";
-        thumb.style.filter = isCenter ? "blur(0)" : "blur(1px)";
-        
-        // Order them: prev, center, next
-        if (isPrev) thumb.style.order = "1";
-        if (isCenter) thumb.style.order = "2";
-        if (isNext) thumb.style.order = "3";
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        pauseAutoplay();
       } else {
-        thumb.style.display = "none";
+        restartAutoplay();
       }
     });
 
-    // Centers the 3-item dots container
-    var dotsContainer = document.getElementById("hmTsDots");
-    if (dotsContainer) {
-      dotsContainer.style.justifyContent = "center";
-      dotsContainer.style.transform = "none";
-      dotsContainer.style.width = "auto";
-      dotsContainer.style.margin = "auto";
-    }
+    window.addEventListener("resize", function () {
+      setPosition(current, false);
+    });
+
+    window.addEventListener("load", function () {
+      setPosition(current, false);
+    });
+
+    renderDots();
+    setPosition(current, false);
+    restartAutoplay();
   }
 
-  // Handle seamless snap-back at the end of transition
-  track.addEventListener("transitionend", function() {
-    isTransitioning = false;
-    if (current === 0) {
-      moveSlide(totalReal, false);
-    } else if (current === totalReal + 1) {
-      moveSlide(1, false);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
+
+(function initTestimonialSlider() {
+  function start() {
+    var track = document.getElementById("hmTsTrack");
+    var thumbs = document.querySelectorAll(".hm-ts-thumb");
+    var cards = track ? Array.from(track.querySelectorAll(".hm-ts-card")) : [];
+    var slider = document.querySelector(".hm-ts-slider");
+    if (!track || !cards.length || !thumbs.length || !slider) return;
+    if (track.dataset.tsInitialized === "true") return;
+    track.dataset.tsInitialized = "true";
+
+    // INFINITE LOOP SETUP: Clone elements for seamless transition
+    var firstClone = cards[0].cloneNode(true);
+    var lastClone = cards[cards.length - 1].cloneNode(true);
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, track.firstChild);
+
+    // Update cards array to include clones
+    var allCards = Array.from(track.querySelectorAll(".hm-ts-card"));
+    var totalReal = cards.length;
+    var current = 1; // Start at the first real card (after the lastClone)
+    var isTransitioning = false;
+
+    function getStep() {
+      var style = window.getComputedStyle(allCards[0]);
+      var margin = parseFloat(style.marginLeft || 0) + parseFloat(style.marginRight || 0);
+      return allCards[0].offsetWidth + margin;
     }
-  });
 
-  thumbs.forEach(function(thumb, idx) {
-    thumb.addEventListener("click", function() {
-      moveSlide(idx + 1);
+    function moveSlide(index, animate = true) {
+      if (isTransitioning && animate) return;
+      if (animate) isTransitioning = true;
+
+      current = index;
+      var step = getStep();
+      var sliderWidth = slider.offsetWidth;
+      var cardWidth = allCards[current].offsetWidth;
+      
+      // Centering the current card
+      var mainTranslateX = (sliderWidth / 2) - (cardWidth / 2) - (current * step);
+      
+      track.style.transition = animate ? "transform .85s cubic-bezier(.16, 1, .3, 1)" : "none";
+      track.style.transform = "translateX(" + mainTranslateX + "px)";
+
+      // Update active states
+      var realIdx = (current - 1 + totalReal) % totalReal;
+      
+      allCards.forEach(function(card, idx) {
+        card.classList.toggle("active", idx === current);
+      });
+
+      thumbs.forEach(function(thumb, idx) {
+        var isCenter = (idx === realIdx);
+        var isPrev = (idx === (realIdx - 1 + totalReal) % totalReal);
+        var isNext = (idx === (realIdx + 1) % totalReal);
+        
+        thumb.classList.toggle("active", isCenter);
+        
+        // Only show current, previous and next
+        if (isCenter || isPrev || isNext) {
+          thumb.style.display = "flex";
+          thumb.style.opacity = isCenter ? "1" : "0.4";
+          thumb.style.filter = isCenter ? "blur(0)" : "blur(1px)";
+          
+          // Order them: prev, center, next
+          if (isPrev) thumb.style.order = "1";
+          if (isCenter) thumb.style.order = "2";
+          if (isNext) thumb.style.order = "3";
+        } else {
+          thumb.style.display = "none";
+        }
+      });
+
+      // Centers the 3-item dots container
+      var dotsContainer = document.getElementById("hmTsDots");
+      if (dotsContainer) {
+        dotsContainer.style.justifyContent = "center";
+        dotsContainer.style.transform = "none";
+        dotsContainer.style.width = "auto";
+        dotsContainer.style.margin = "auto";
+      }
+    }
+
+    // Handle seamless snap-back at the end of transition
+    track.addEventListener("transitionend", function() {
+      isTransitioning = false;
+      if (current === 0) {
+        moveSlide(totalReal, false);
+      } else if (current === totalReal + 1) {
+        moveSlide(1, false);
+      }
     });
-  });
 
-  window.addEventListener("resize", function() {
-    moveSlide(current, false);
-  });
+    thumbs.forEach(function(thumb, idx) {
+      thumb.addEventListener("click", function() {
+        moveSlide(idx + 1);
+      });
+    });
 
-  // Initial call
-  moveSlide(1, false);
+    window.addEventListener("resize", function() {
+      moveSlide(current, false);
+    });
 
-  // Auto-play
-  setInterval(function() {
-    if (!isTransitioning) moveSlide(current + 1);
-  }, 6000);
-});
+    // Initial call
+    moveSlide(1, false);
+
+    // Auto-play
+    setInterval(function() {
+      if (!isTransitioning) moveSlide(current + 1);
+    }, 6000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
 </script>
 @endpush

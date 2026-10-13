@@ -12,11 +12,15 @@ class RobotsController extends Controller
      */
     public function __invoke()
     {
-        $settings = Cache::remember('robots_txt_settings', now()->addDay(), function () {
-            return RobotsSetting::firstOrCreate(['id' => 1], RobotsSetting::defaults());
-        });
-
-        $content = $this->generateRobotsTxt($settings);
+        $path = public_path('robots.txt');
+        if (file_exists($path) && is_readable($path)) {
+            $content = file_get_contents($path);
+        } else {
+            $settings = Cache::remember('robots_txt_settings', now()->addDay(), function () {
+                return RobotsSetting::firstOrCreate(['id' => 1], RobotsSetting::defaults());
+            });
+            $content = $settings->custom_rules ?: $this->generateRobotsTxt($settings);
+        }
 
         return response($content, 200)
             ->header('Content-Type', 'text/plain; charset=UTF-8');
@@ -101,16 +105,36 @@ class RobotsController extends Controller
             $rules[] = "Disallow: /build/assets/*.js";
         }
 
-        // Custom Rules
+        // Custom Rules / Blocked Paths
         if ($settings->custom_rules) {
             $customLines = explode("\n", str_replace("\r", "", $settings->custom_rules));
             foreach ($customLines as $line) {
                 $line = trim($line);
-                if ($line !== '') {
-                    if (preg_match('/^(Disallow|Allow|Sitemap|User-agent):/i', $line)) {
-                        $rules[] = $line;
+                if ($line === '') {
+                    continue;
+                }
+
+                // If user wrote directive like Disallow: ... or Allow: ...
+                if (preg_match('/^(Disallow|Allow):\s*(.*)$/i', $line, $matches)) {
+                    $directive = ucfirst(strtolower($matches[1]));
+                    $target = trim($matches[2]);
+                    if (preg_match('/^https?:\/\//i', $target)) {
+                        $parsedPath = parse_url($target, PHP_URL_PATH) ?: '/';
+                        $rules[] = "{$directive}: {$parsedPath}";
                     } else {
-                        $rules[] = "Disallow: " . $line;
+                        $targetPath = str_starts_with($target, '/') ? $target : ('/' . $target);
+                        $rules[] = "{$directive}: {$targetPath}";
+                    }
+                } elseif (preg_match('/^(Sitemap|User-agent):/i', $line)) {
+                    $rules[] = $line;
+                } else {
+                    // Raw path or full URL pasted by user -> block it
+                    if (preg_match('/^https?:\/\//i', $line)) {
+                        $parsedPath = parse_url($line, PHP_URL_PATH) ?: '/';
+                        $rules[] = "Disallow: " . $parsedPath;
+                    } else {
+                        $cleanPath = str_starts_with($line, '/') ? $line : ('/' . $line);
+                        $rules[] = "Disallow: " . $cleanPath;
                     }
                 }
             }

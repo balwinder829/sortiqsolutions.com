@@ -14,6 +14,7 @@ return [
         'cases' => 'frontend.pages.case-studies',
         'internship' => 'frontend.pages.internship',
         'terms' => 'frontend.pages.terms',
+        'privacy-policy' => 'frontend.pages.privacy-policy',
         'faq' => 'frontend.pages.faq',
         'support' => 'frontend.pages.support',
     ],
@@ -54,6 +55,7 @@ return [
         'our-expertise' => 'expertise',
         'portfolios' => 'portfolio',
         'case-studies' => 'cases',
+        'privacy' => 'privacy-policy',
     ],
 
     'legacy_blogs' => [

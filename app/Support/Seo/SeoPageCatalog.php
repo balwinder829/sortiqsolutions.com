@@ -113,6 +113,14 @@ class SeoPageCatalog
             ),
             self::page(
                 section: 'Company Pages',
+                label: 'Privacy Policy',
+                routeName: 'frontend.privacy-policy',
+                title: 'Privacy Policy | Sortiq Solutions Pvt. Ltd.',
+                description: 'Read the official Privacy Policy of Sortiq Solutions Pvt. Ltd. to learn how we collect, use, and protect your personal and business information.',
+                keywords: 'privacy policy, Sortiq Solutions privacy, data protection, security, privacy terms'
+            ),
+            self::page(
+                section: 'Company Pages',
                 label: 'Contact',
                 routeName: 'frontend.contact',
                 title: 'Contact Sortiq Solutions | Start Your Digital Project',

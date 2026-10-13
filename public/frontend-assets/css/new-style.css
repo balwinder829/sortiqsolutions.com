@@ -1746,7 +1746,9 @@ button {
 
   margin-bottom: 45px;
 
-}.hm-cert-slider {
+}
+
+.hm-cert-slider {
   position: relative;
   width: 100%;
   max-width: 1200px;

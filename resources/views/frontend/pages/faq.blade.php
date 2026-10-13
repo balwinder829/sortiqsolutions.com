@@ -24,18 +24,18 @@
           <div class="space-y-4">
             
               <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <button type="button" data-faq-button="faq-panel-0" aria-expanded="true" class="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors outline-none">
-                  <span class="font-bold pr-4 leading-snug md:text-lg text-[#ff6600]">What services does Sortiq Solutions provide?</span>
-                  <iconify-icon icon="lucide:chevron-down" width="20" height="20" class="text-[#ff6600] rotate-180 transition-transform"></iconify-icon>
+                <button type="button" data-faq-button="faq-panel-0" aria-expanded="false" class="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors outline-none cursor-pointer">
+                  <span class="font-bold pr-4 leading-snug md:text-lg text-[#001a3d] transition-colors">What services does Sortiq Solutions provide?</span>
+                  <iconify-icon icon="lucide:chevron-down" width="20" height="20" class="text-gray-400 transition-transform"></iconify-icon>
                 </button>
-                <div id="faq-panel-0" class="faq-panel px-5 md:px-6 pb-6 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-50 animate-fadeIn">
+                <div id="faq-panel-0" class="faq-panel px-5 md:px-6 pb-6 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-50 animate-fadeIn" hidden>
                   <p class="mt-4">Sortiq Solutions specializes in a wide range of digital services including Web Development, App Development, Software Development, Graphic Designing, and Digital Marketing (SEO/SMO).</p>
                 </div>
               </div>
             
               <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <button type="button" data-faq-button="faq-panel-1" aria-expanded="false" class="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors outline-none">
-                  <span class="font-bold pr-4 leading-snug md:text-lg text-[#001a3d]">How can I apply for an internship?</span>
+                <button type="button" data-faq-button="faq-panel-1" aria-expanded="false" class="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors outline-none cursor-pointer">
+                  <span class="font-bold pr-4 leading-snug md:text-lg text-[#001a3d] transition-colors">How can I apply for an internship?</span>
                   <iconify-icon icon="lucide:chevron-down" width="20" height="20" class="text-gray-400 transition-transform"></iconify-icon>
                 </button>
                 <div id="faq-panel-1" class="faq-panel px-5 md:px-6 pb-6 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-50 animate-fadeIn" hidden>
@@ -44,8 +44,8 @@
               </div>
             
               <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <button type="button" data-faq-button="faq-panel-2" aria-expanded="false" class="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors outline-none">
-                  <span class="font-bold pr-4 leading-snug md:text-lg text-[#001a3d]">Where is your office located?</span>
+                <button type="button" data-faq-button="faq-panel-2" aria-expanded="false" class="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors outline-none cursor-pointer">
+                  <span class="font-bold pr-4 leading-snug md:text-lg text-[#001a3d] transition-colors">Where is your office located?</span>
                   <iconify-icon icon="lucide:chevron-down" width="20" height="20" class="text-gray-400 transition-transform"></iconify-icon>
                 </button>
                 <div id="faq-panel-2" class="faq-panel px-5 md:px-6 pb-6 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-50 animate-fadeIn" hidden>
@@ -54,8 +54,8 @@
               </div>
             
               <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <button type="button" data-faq-button="faq-panel-3" aria-expanded="false" class="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors outline-none">
-                  <span class="font-bold pr-4 leading-snug md:text-lg text-[#001a3d]">How do I get a project quote?</span>
+                <button type="button" data-faq-button="faq-panel-3" aria-expanded="false" class="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors outline-none cursor-pointer">
+                  <span class="font-bold pr-4 leading-snug md:text-lg text-[#001a3d] transition-colors">How do I get a project quote?</span>
                   <iconify-icon icon="lucide:chevron-down" width="20" height="20" class="text-gray-400 transition-transform"></iconify-icon>
                 </button>
                 <div id="faq-panel-3" class="faq-panel px-5 md:px-6 pb-6 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-50 animate-fadeIn" hidden>
@@ -67,8 +67,8 @@
         </section>
 
         <aside class="lg:col-span-1 space-y-6 order-1 lg:order-2">
-          <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 sticky top-10">
-            <h3 class="text-[#001a3d] text-xl font-extrabold mb-8 border-b pb-4">Contact Info</h3>
+          <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 sticky top-10">
+            <h3 class="text-[#001a3d] text-xl font-extrabold mb-8 border-b border-gray-100 pb-4">Contact Info</h3>
             <div class="space-y-8">
               <div class="flex gap-4 group">
                 <div class="bg-[#ff6600] p-3 rounded-xl text-white h-fit shadow-lg shadow-orange-100 transition-transform group-hover:scale-110"><iconify-icon icon="lucide:phone" width="20" height="20"></iconify-icon></div>
@@ -93,37 +93,44 @@
                 </div>
               </div>
             </div>
-            <div class="flex gap-2 mt-10 pt-8 border-t border-gray-100 justify-center lg:justify-start">
+            <div class="sq-faq-socials" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 7px; margin-top: 32px; padding-top: 24px; border-top: 1px solid #f1f5f9; align-items: center; width: 100%;">
               
-                <a href="https://www.facebook.com/SortiqSolutions/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on social media" class="bg-[#ff6600] text-white p-3 rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300 shadow-sm shadow-orange-100">
-                  <iconify-icon icon="fa6-brands:facebook-f" width="18" height="18"></iconify-icon>
+                <a href="https://www.facebook.com/SortiqSolutions/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" class="sq-faq-social-btn" style="aspect-ratio: 1; border-radius: 9px; background: #ff6600; color: #ffffff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 10px rgba(255, 102, 0, 0.22); transition: all 0.25s ease;">
+                  <iconify-icon icon="fa6-brands:facebook-f" width="15" height="15" style="color: #ffffff;"></iconify-icon>
                 </a>
               
-                <a href="https://www.linkedin.com/company/sortiq-solutions/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on social media" class="bg-[#ff6600] text-white p-3 rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300 shadow-sm shadow-orange-100">
-                  <iconify-icon icon="fa6-brands:linkedin-in" width="18" height="18"></iconify-icon>
+                <a href="https://www.linkedin.com/company/sortiq-solutions/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" class="sq-faq-social-btn" style="aspect-ratio: 1; border-radius: 9px; background: #ff6600; color: #ffffff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 10px rgba(255, 102, 0, 0.22); transition: all 0.25s ease;">
+                  <iconify-icon icon="fa6-brands:linkedin-in" width="15" height="15" style="color: #ffffff;"></iconify-icon>
                 </a>
               
-                <a href="https://www.instagram.com/sortiqsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on social media" class="bg-[#ff6600] text-white p-3 rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300 shadow-sm shadow-orange-100">
-                  <iconify-icon icon="fa6-brands:instagram" width="18" height="18"></iconify-icon>
+                <a href="https://www.instagram.com/sortiqsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" class="sq-faq-social-btn" style="aspect-ratio: 1; border-radius: 9px; background: #ff6600; color: #ffffff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 10px rgba(255, 102, 0, 0.22); transition: all 0.25s ease;">
+                  <iconify-icon icon="fa6-brands:instagram" width="15" height="15" style="color: #ffffff;"></iconify-icon>
                 </a>
               
-                <a href="https://www.youtube.com/@SortiqSolutions" target="_blank" rel="noopener noreferrer" aria-label="Follow us on social media" class="bg-[#ff6600] text-white p-3 rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300 shadow-sm shadow-orange-100">
-                  <iconify-icon icon="fa6-brands:youtube" width="18" height="18"></iconify-icon>
+                <a href="https://www.youtube.com/@SortiqSolutions" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube" class="sq-faq-social-btn" style="aspect-ratio: 1; border-radius: 9px; background: #ff6600; color: #ffffff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 10px rgba(255, 102, 0, 0.22); transition: all 0.25s ease;">
+                  <iconify-icon icon="fa6-brands:youtube" width="15" height="15" style="color: #ffffff;"></iconify-icon>
                 </a>
               
-                <a href="https://x.com/SortiqSolutions" target="_blank" rel="noopener noreferrer" aria-label="Follow us on social media" class="bg-[#ff6600] text-white p-3 rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300 shadow-sm shadow-orange-100">
-                  <iconify-icon icon="fa6-brands:x-twitter" width="18" height="18"></iconify-icon>
+                <a href="https://x.com/SortiqSolutions" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter" class="sq-faq-social-btn" style="aspect-ratio: 1; border-radius: 9px; background: #ff6600; color: #ffffff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 10px rgba(255, 102, 0, 0.22); transition: all 0.25s ease;">
+                  <iconify-icon icon="fa6-brands:x-twitter" width="15" height="15" style="color: #ffffff;"></iconify-icon>
                 </a>
               
-                <a href="https://in.pinterest.com/sortiqsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on social media" class="bg-[#ff6600] text-white p-3 rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300 shadow-sm shadow-orange-100">
-                  <iconify-icon icon="fa6-brands:pinterest-p" width="18" height="18"></iconify-icon>
+                <a href="https://in.pinterest.com/sortiqsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Pinterest" class="sq-faq-social-btn" style="aspect-ratio: 1; border-radius: 9px; background: #ff6600; color: #ffffff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 10px rgba(255, 102, 0, 0.22); transition: all 0.25s ease;">
+                  <iconify-icon icon="fa6-brands:pinterest-p" width="15" height="15" style="color: #ffffff;"></iconify-icon>
                 </a>
               
-                <a href="https://medium.com/@sortiqsolutions" target="_blank" rel="noopener noreferrer" aria-label="Follow us on social media" class="bg-[#ff6600] text-white p-3 rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300 shadow-sm shadow-orange-100">
-                  <iconify-icon icon="fa6-brands:medium" width="18" height="18"></iconify-icon>
+                <a href="https://medium.com/@sortiqsolutions" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Medium" class="sq-faq-social-btn" style="aspect-ratio: 1; border-radius: 9px; background: #ff6600; color: #ffffff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 10px rgba(255, 102, 0, 0.22); transition: all 0.25s ease;">
+                  <iconify-icon icon="fa6-brands:medium" width="15" height="16" style="color: #ffffff;"></iconify-icon>
                 </a>
               
             </div>
+            <style>
+              .sq-faq-social-btn:hover {
+                background: #001a3d !important;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 14px rgba(0, 26, 61, 0.25) !important;
+              }
+            </style>
           </div>
         </aside>
       </main>

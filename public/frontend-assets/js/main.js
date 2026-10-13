@@ -896,20 +896,43 @@ const initFaqPage = () => {
       if (!panel) return;
 
       const expanded = button.getAttribute("aria-expanded") === "true";
-      buttons.forEach((item) => item.setAttribute("aria-expanded", "false"));
+      
+      // Reset all buttons
+      buttons.forEach((item) => {
+        item.setAttribute("aria-expanded", "false");
+        const titleSpan = item.querySelector("span");
+        if (titleSpan) {
+          titleSpan.classList.remove("text-[#ff6600]");
+          titleSpan.classList.add("text-[#001a3d]");
+        }
+        const icon = item.querySelector("iconify-icon");
+        if (icon) {
+          icon.classList.remove("rotate-180", "text-[#ff6600]");
+          icon.classList.add("text-gray-400");
+        }
+      });
+
+      // Hide all panels
       $$(".faq-panel").forEach((item) => {
         item.hidden = true;
       });
-      $$("[data-faq-button] iconify-icon").forEach((icon) => {
-        icon.classList.remove("rotate-180", "text-[#ff6600]");
-        icon.classList.add("text-gray-400");
-      });
 
+      // If clicked button was not open, open it and apply active orange color
       if (!expanded) {
         button.setAttribute("aria-expanded", "true");
         panel.hidden = false;
-        $("iconify-icon", button)?.classList.add("rotate-180", "text-[#ff6600]");
-        $("iconify-icon", button)?.classList.remove("text-gray-400");
+
+        const activeSpan = button.querySelector("span");
+        if (activeSpan) {
+          activeSpan.classList.remove("text-[#001a3d]");
+          activeSpan.classList.add("text-[#ff6600]");
+        }
+
+        const activeIcon = button.querySelector("iconify-icon");
+        if (activeIcon) {
+          activeIcon.classList.add("rotate-180", "text-[#ff6600]");
+          activeIcon.classList.remove("text-gray-400");
+        }
       }
     });
   });

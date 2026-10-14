@@ -462,7 +462,7 @@ class PortfolioController extends Controller
             $slug = Str::slug($portfolio->title ?: 'new-portfolio');
         }
 
-        return url('portfolio#' . $slug);
+        return url('portfolio/' . $slug);
     }
 
     private function availableCategories(): array

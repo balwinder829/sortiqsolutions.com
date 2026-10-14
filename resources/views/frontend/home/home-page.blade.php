@@ -864,7 +864,7 @@
     </div>
   </div>
       <div class="text-center mt-5">
-      <a href="/clients/" class="hm-btn-orange" aria-label="View all Sortiq Solutions global clients and partners">VIEW ALL CLIENTS</a>
+      <a href="/clients" class="hm-btn-orange" aria-label="View all Sortiq Solutions global clients and partners">VIEW ALL CLIENTS</a>
     </div>
   </div>
 </section>
@@ -882,7 +882,7 @@
         <!-- white accent line below heading -->
          <div class="hx-line" style="margin-bottom: 20px;"></div>
         <p class="hm-expertise-desc">Have a glimpse at the range of innovative IT solutions delivered by Sortiq Solutions Pvt Ltd. From cutting-edge web design to seamless development, we offer end-to-end services tailored to meet your business needs. Our team is dedicated to driving digital transformation through advanced technologies and creative strategies. With a focus on quality, we empower businesses to achieve sustainable growth.</p>
-        <a href="/portfolios/" class="hm-btn-dark mt-3 d-inline-flex">BROWSE OUR PORTFOLIO <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon></a>
+        <a href="/portfolios" class="hm-btn-dark mt-3 d-inline-flex">BROWSE OUR PORTFOLIO <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon></a>
       </div>
     </div>
   </div>
@@ -1008,7 +1008,7 @@
       </div>
     </div>
       <div class="text-center mt-5">
-      <a href="/blog/" class="hm-btn-orange" style="border-radius: 50px; padding: 8px 25px; font-weight: 700;" aria-label="View all latest technology and development blog insights">VIEW ALL INSIGHTS</a>
+      <a href="/blog" class="hm-btn-orange" style="border-radius: 50px; padding: 8px 25px; font-weight: 700;" aria-label="View all latest technology and development blog insights">VIEW ALL INSIGHTS</a>
     </div>
   </div>
 </section>
